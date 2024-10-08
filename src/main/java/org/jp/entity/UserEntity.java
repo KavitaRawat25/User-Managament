@@ -1,9 +1,12 @@
 package org.jp.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -28,7 +31,12 @@ public class UserEntity {
 	@Column
 	private String userEmail;
 	@Column
-	private String userRole;
+	@OneToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private UserRole userRole;
+	
+	
+	
 	public Long getId() {
 		return Id;
 	}
@@ -71,14 +79,12 @@ public class UserEntity {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserRole() {
+	public UserRole getUserRole() {
 		return userRole;
 	}
-	public void setUserRole(String userRole) {
+	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
-	
-	
 	
 	
 	

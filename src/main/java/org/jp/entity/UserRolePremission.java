@@ -95,12 +95,12 @@ public class UserRolePremission {
 
 
 	public UserRole getUser() {
-		return user;
+		return userRole;
 	}
 
 
 	public void setUser(UserRole user) {
-		this.user = user;
+		this.userRole = user;
 	}
 
 
@@ -123,6 +123,6 @@ public class UserRolePremission {
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
-	private UserRole user;
+	private UserRole userRole;
 	
 }
