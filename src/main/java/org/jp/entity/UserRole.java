@@ -2,6 +2,8 @@ package org.jp.entity;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
-@Entity
+@EntityScan
 @Table
 public class UserRole {
 	@Id
@@ -106,6 +108,6 @@ public class UserRole {
 	private int status;
 	
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
 	private List<UserRolePremission> rolePremissions;
 }
