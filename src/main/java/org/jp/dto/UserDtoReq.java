@@ -19,6 +19,8 @@ public class UserDtoReq {
 	private boolean canAccessWebRequest;
 	
 	private int status;
+
+	
 	
 
 }
