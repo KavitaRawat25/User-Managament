@@ -2,10 +2,9 @@ package org.jp.entity;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,7 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
-@EntityScan
+@Entity
 @Table
 public class UserRole {
 	@Id
@@ -36,9 +35,6 @@ public class UserRole {
 	@Column(nullable = false)
 	private int status;
 	
-	
-	@OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
-	private List<UserRolePremission> rolePremissions;
 	
 	
 	
@@ -100,17 +96,6 @@ public class UserRole {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-
-	public List<UserRolePremission> getRolePremissions() {
-		return rolePremissions;
-	}
-
-
-	public void setRolePremissions(List<UserRolePremission> rolePremissions) {
-		this.rolePremissions = rolePremissions;
-	}
-
 
 	
 }
