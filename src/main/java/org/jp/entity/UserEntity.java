@@ -31,6 +31,9 @@ public class UserEntity {
 	@Column
 	private String userEmail;
 	
+	@Column
+	private String password;
+	
 	@OneToOne
 	@JoinColumn(name = "user_role_id")  
 	private UserRole userRole;
