@@ -5,9 +5,6 @@ import java.util.List;
 import org.jp.dto.UserDtoReq;
 import org.jp.dto.UserDtoRes;
 
-import org.jp.entity.UserRole;
-
-import org.jp.service.RoleService;
 import org.jp.service.RoleServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,9 +34,13 @@ public class RoleController {
 	}
 
 	@GetMapping("/list")
-	public List<UserDtoRes> getDetails() {
+	public ResponseEntity<List<UserDtoRes>> getDetails() {
 		List<UserDtoRes> userList = (List<UserDtoRes>) roleService.getDetails();
-		return userList;
+		if (userList != null) {
+			return new ResponseEntity<>(userList, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 
 	}
 
