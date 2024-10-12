@@ -11,15 +11,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepo userRepo;
+	@Autowired
+	private UserRepo userRepo;
 
-    @Autowired
-    private UserTranslator userTranslator;
+	@Autowired
+	private UserTranslator userTranslator;
 
-    @Override
-    public UserDto createUserDto(UserDto userDto) {
-        UserEntity saveEntity = userRepo.save(userTranslator.translateUserDtoToUserEntity(userDto));
-        return userTranslator.translateUserEntityToUserDto(saveEntity);
-    }
+
+	
+	@Override
+	public UserDto createUserDto(UserDto userDto) {
+		
+		UserEntity saveEntity = userRepo.save(userTranslator.translateUserDtoToUserEntity(userDto));
+		
+		return userTranslator.translateUserEntityToUserDto(saveEntity);
+	}
+	
 }
