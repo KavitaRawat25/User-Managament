@@ -1,5 +1,7 @@
 package org.jp.service;
 
-public class UserService {
+import org.jp.dto.UserDto;
 
+public interface UserService {
+    UserDto createUserDto(UserDto userDto);
 }
