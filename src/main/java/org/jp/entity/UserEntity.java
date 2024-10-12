@@ -1,11 +1,9 @@
 package org.jp.entity;
 
-<<<<<<< HEAD
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-=======
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,72 +11,46 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+
 
 @Data
->>>>>>> branch 'danish' of https://github.com/erdanishrajput/User-Managament.git
 @Entity
-@Table(name = "users") // Added a table name for clarity
-@Data
-@NoArgsConstructor
+@Table // Added a table name for clarity
 public class UserEntity {
-<<<<<<< HEAD
-    @Id
+   @Column
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Changed to lowercase 'id' for convention
     
-    @Column(nullable = false) // Added nullable constraint for required fields
+    @Column // Added nullable constraint for required fields
     private String firstName;
 
-    @Column(nullable = false) // Added nullable constraint for required fields
+    @Column // Added nullable constraint for required fields
     private String lastName;
 
-    @Column(nullable = false, unique = true) // Added unique constraint for phone number
+    @Column // Added unique constraint for phone number
     private Long phoneNo;
 
-    @Column(nullable = false)
+    @Column
     private Long roleId;
 
-    @Column(nullable = false)
+    @Column
     private Boolean status;
 
-    @Column(nullable = false, unique = true) // Added unique constraint for email
+    @Column // Added unique constraint for email
     private String userEmail;
 
-    @OneToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "id", insertable = false, updatable = false) // Set insertable and updatable to false
-    private UserRole userRole;
-=======
-	@Column
-	@jakarta.persistence.Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	
-	@Column
-	private String firstName;
-	@Column
-	private String lastName;
-	@Column
-	private Long phoneNo;
-	@Column
-	private Long roleId;
-	@Column
-	private Boolean status;
-	@Column
-	private String userEmail;
-	
-	@OneToOne
-	@JoinColumn(name = "user_role_id")  
-	private UserRole userRole;
-
+//    @OneToOne
+//    @JoinColumn(name = "user_role_id") // Set insertable and updatable to false
+//    private UserRole userRole;
 	
 	
 	
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -116,14 +88,13 @@ public class UserEntity {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public UserRole getUserRole() {
-		return userRole;
-	}
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
+	
+//	public UserRole getUserRole() {
+//		return userRole;
+//	}
+//	public void setUserRole(UserRole userRole) {
+//		this.userRole = userRole;
+//	}
 	
 	
-	
->>>>>>> branch 'danish' of https://github.com/erdanishrajput/User-Managament.git
 }

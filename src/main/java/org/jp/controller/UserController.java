@@ -22,4 +22,5 @@ public class UserController {
         UserDto saveDto = this.userService.createUserDto(userDto);
         return new ResponseEntity<>(saveDto, HttpStatus.CREATED);
     }
+    
 }
