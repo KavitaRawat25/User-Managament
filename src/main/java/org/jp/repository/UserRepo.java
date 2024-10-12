@@ -2,7 +2,9 @@ package org.jp.repository;
 
 import org.jp.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepo extends JpaRepository<UserEntity, Long>{
-
+@Repository
+public interface UserRepo extends JpaRepository<UserEntity, Long> {
+    // Custom query methods can be added here if needed
 }

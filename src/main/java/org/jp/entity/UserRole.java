@@ -1,113 +1,35 @@
 package org.jp.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-
-@EntityScan
-@Table
+@Entity
+@Table(name = "user_roles") // Added a table name for clarity
+@Data
+@NoArgsConstructor
 public class UserRole {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	public int getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
+    @Column(nullable = false, unique = true) // Added unique constraint for role name
+    private String roleName;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Column(nullable = false)
+    private String roleDescription;
 
+    @Column(nullable = false)
+    private boolean canAccessMobileRequest;
 
-	public String getRoleName() {
-		return roleName;
-	}
+    @Column(nullable = false)
+    private boolean canAccessWebRequest;
 
+    @Column(nullable = false)
+    private int status;
 
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-
-
-	public String getRoleDescription() {
-		return roleDescription;
-	}
-
-
-	public void setRoleDescription(String roleDescription) {
-		this.roleDescription = roleDescription;
-	}
-
-
-	public boolean isCanAccessMobileRequest() {
-		return canAccessMobileRequest;
-	}
-
-
-	public void setCanAccessMobileRequest(boolean canAccessMobileRequest) {
-		this.canAccessMobileRequest = canAccessMobileRequest;
-	}
-
-
-	public boolean isCanAccessWebRequest() {
-		return canAccessWebRequest;
-	}
-
-
-	public void setCanAccessWebRequest(boolean canAccessWebRequest) {
-		this.canAccessWebRequest = canAccessWebRequest;
-	}
-
-
-	public int getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-
-	public List<UserRolePremission> getRolePremissions() {
-		return rolePremissions;
-	}
-
-
-	public void setRolePremissions(List<UserRolePremission> rolePremissions) {
-		this.rolePremissions = rolePremissions;
-	}
-
-
-	@Column(nullable = false,  unique = true)
-	private String roleName;
-	
-	@Column(nullable = false)
-	private String roleDescription;
-	
-	@Column(nullable  = false)
-	private boolean canAccessMobileRequest;
-	
-	
-	@Column(nullable = false)
-	private boolean canAccessWebRequest;
-	
-	@Column(nullable = false)
-	private int status;
-	
-	
-	@OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
-	private List<UserRolePremission> rolePremissions;
+    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
+    private List<UserRolePermission> rolePermissions; // Changed variable name for clarity
 }
