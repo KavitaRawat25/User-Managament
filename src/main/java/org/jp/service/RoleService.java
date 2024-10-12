@@ -1,6 +1,9 @@
 package org.jp.service;
 
+import java.util.List;
+
 import org.jp.dto.UserDtoReq;
+import org.jp.dto.UserDtoRes;
 import org.jp.entity.UserRole;
 import org.jp.repository.RoleRepo;
 import org.jp.translater.RoleTranslater;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleService implements RoleServiceInterface{
-
 	
 	@Autowired
 	private RoleRepo roleRepo;
@@ -24,5 +26,9 @@ public class RoleService implements RoleServiceInterface{
 		UserRole userRole = roleTranslater.translateRole(userDtoReq);
 		UserRole savedRole = roleRepo.save(userRole);
 		return roleTranslater.translateRoleDto(savedRole);
+	}
+
+	public List<UserDtoRes> getDetails() {
+		return roleTranslater.translateRoleDto(roleRepo.findAll());
 	}
 }
