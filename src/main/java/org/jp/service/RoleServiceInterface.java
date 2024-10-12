@@ -7,6 +7,8 @@ import org.jp.dto.UserDtoRes;
 
 public interface RoleServiceInterface {
 	public UserDtoReq saveRole(UserDtoReq userDtoReq);
+
 	public List<UserDtoRes> getDetails();
 
+	UserDtoRes updateRoleByid(Long id, UserDtoReq req);
 }

@@ -12,23 +12,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleTranslater{
+public class RoleTranslater {
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	public UserRole translateRole(UserDtoReq userDtoReq) {
 		return modelMapper.map(userDtoReq, UserRole.class);
 	}
+
 	public UserDtoReq translateRoleDto(UserRole userRole) {
 		return modelMapper.map(userRole, UserDtoReq.class);
 	}
-	
+
 	public UserDtoRes translateRoleRes(UserRole userRole) {
 		return modelMapper.map(userRole, UserDtoRes.class);
 	}
-	
+
 	public List<UserDtoRes> translateRoleDto(List<UserRole> userRoles) {
 		return userRoles.stream().map(this::translateRoleRes).collect(Collectors.toList());
+	}
+
+	public UserDtoRes translateRoleToRes(UserRole userRole) {
+		return modelMapper.map(userRole, UserDtoRes.class);
 	}
 
 }
