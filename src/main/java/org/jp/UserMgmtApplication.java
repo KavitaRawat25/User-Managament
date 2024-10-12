@@ -19,5 +19,5 @@ public class UserMgmtApplication {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-
+	
 }
