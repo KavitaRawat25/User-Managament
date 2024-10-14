@@ -27,4 +27,8 @@ public class UserServiceImpl implements UserService {
 		return userTranslator.translateUserEntityToUserDto(saveEntity);
 	}
 	
+	public String login(UserDto dto) {
+		return null;
+	}
+	
 }
