@@ -1,5 +1,7 @@
 package org.jp.service.impl;
 
+import java.util.Optional;
+
 import org.jp.dto.UserDto;
 import org.jp.entity.UserEntity;
 import org.jp.repository.UserRepo;
@@ -28,7 +30,20 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public String login(UserDto dto) {
-		return null;
+		Optional<UserEntity> ent = userRepo.findByUsername(dto.getUsername());
+		if(ent.isPresent()) {
+			UserEntity login = ent.get();
+			if(login.getPassword().equals(dto.getPassword())) {
+				return "Successfully login";
+			}else {
+				return "Invalid password";
+			}
+		}
+		else {
+			return "user not found";
+		}
+	}
+
 	}
 	
 }
