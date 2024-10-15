@@ -51,4 +51,21 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	
+	public String login(UserDto req){
+		Optional<UserEntity> user = userRepo.findByuserEmail(req.getUserEmail());
+		if(user.isPresent()) {
+			UserEntity ur = user.get();
+			if(ur.getPassword().equals(req.getPassword())) {
+				return "sucessfully login";
+			}
+			else {
+				return "login not sucessfully";
+			}
+		}
+		else {
+			return "user not found";
+		}
+	}
+	
 }
