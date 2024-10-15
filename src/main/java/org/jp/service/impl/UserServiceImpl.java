@@ -1,5 +1,7 @@
 package org.jp.service.impl;
 
+import java.util.Optional;
+
 import org.jp.dto.UserDto;
 import org.jp.entity.UserEntity;
 import org.jp.repository.UserRepo;
@@ -27,8 +29,20 @@ public class UserServiceImpl implements UserService {
 		return userTranslator.translateUserEntityToUserDto(saveEntity);
 	}
 	
-	public String login(UserDto dto) {
-		return null;
+	public String login(UserDto req){
+		Optional<UserEntity> user = userRepo.findByuserEmail(req.getUserEmail());
+		if(user.isPresent()) {
+			UserEntity ur = user.get();
+			if(ur.getPassword().equals(req.getPassword())) {
+				return "sucessfully login";
+			}
+			else {
+				return "login not sucessfully";
+			}
+		}
+		else {
+			return "user not found";
+		}
 	}
 	
 }

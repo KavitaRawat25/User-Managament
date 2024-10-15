@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table // Added a table name for clarity
 public class UserEntity {
+
    @Column
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +41,38 @@ public class UserEntity {
     @Column // Added unique constraint for email
     private String userEmail;
     private String password;
+
+
+	@Column
+	@jakarta.persistence.Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	
+	@Column
+	private String firstName;
+	@Column
+	private String lastName;
+	@Column
+	private Long phoneNo;
+	@Column
+	private Long roleId;
+	@Column
+	private Boolean status;
+	@Column
+	private String userEmail;
+	
+	@Column
+	private String password;
+	
+	@OneToOne
+	@JoinColumn(name = "user_role_id")  
+	private UserRole userRole;
+
+	
+	
+	
+	
+	
+	
 
 }
