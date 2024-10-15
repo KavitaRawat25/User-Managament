@@ -1,5 +1,8 @@
 package org.jp.service;
 
+
+import org.jp.dto.UserDto;
+
 import java.util.Optional;
 
 import org.jp.dto.UserEntityReq;
@@ -41,4 +44,12 @@ public class UserService {
 		}
 	}
 
+
+
+
+
+public interface UserService {
+    UserDto createUserDto(UserDto userDto);
+    
+    String login(UserDto dto);
 }

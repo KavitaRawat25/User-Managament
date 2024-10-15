@@ -1,17 +1,24 @@
 package org.jp.dto;
 
 
+import lombok.Data;
 
+@Data
 public class UserDtoRes {
 	
 	private Long id;
-private String roleName;
+
+	private String roleName;
 	
 	private String roleDescription;
 	
 	private boolean canAccessMobileRequest;
 	
+	private boolean canAccessWebRequest;
 	
+	private int status;
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -59,9 +66,5 @@ private String roleName;
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-	private boolean canAccessWebRequest;
-	
-	private int status;
 
 }

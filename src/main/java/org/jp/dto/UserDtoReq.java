@@ -8,19 +8,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDtoReq {
-	
-	private String roleName;
-	
-	private String roleDescription;
-	
-	private boolean canAccessMobileRequest;
-	
-	
-	private boolean canAccessWebRequest;
-	
-	private int status;
 
-	
-	
+	private String roleName;
+
+	private String roleDescription;
+
+	private boolean canAccessMobileRequest;
+
+	private boolean canAccessWebRequest;
+
+	private int status;
 
 }
