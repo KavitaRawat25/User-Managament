@@ -19,15 +19,38 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserTranslator userTranslator;
 
-
-	
 	@Override
 	public UserDto createUserDto(UserDto userDto) {
-		
+
 		UserEntity saveEntity = userRepo.save(userTranslator.translateUserDtoToUserEntity(userDto));
-		
+
 		return userTranslator.translateUserEntityToUserDto(saveEntity);
 	}
+
+	// -------------------- UPDATE USER -------------------------------
+	@Override
+	public UserDto updateUserById(Long id, UserDto userDto) {
+		Optional<UserEntity> existingUserOptional = userRepo.findById(id);
+
+		if (existingUserOptional.isPresent()) {
+			UserEntity existingUser = existingUserOptional.get();
+
+			existingUser.setFirstName(userDto.getFirstName());
+			existingUser.setLastName(userDto.getLastName());
+			existingUser.setPhoneNo(userDto.getPhoneNo());
+			existingUser.setRoleId(userDto.getRoleId());
+			existingUser.setStatus(userDto.getStatus());
+			existingUser.setUserEmail(userDto.getUserEmail());
+
+			UserEntity updatedEntity = userRepo.save(existingUser);
+
+			return userTranslator.translateUserEntityToUserDto(updatedEntity);
+
+		} else {
+			throw new RuntimeException("User not found with id: " + id);
+		}
+	}
+
 	
 	public String login(UserDto req){
 		Optional<UserEntity> user = userRepo.findByuserEmail(req.getUserEmail());

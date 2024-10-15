@@ -50,6 +50,10 @@ public class UserService {
 
 public interface UserService {
     UserDto createUserDto(UserDto userDto);
+
+
+    UserDto updateUserById(Long id, UserDto userDto);
+
     
     String login(UserDto dto);
 }
