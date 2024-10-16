@@ -52,6 +52,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	
+
+	public String login(UserDto dto) {
+		Optional<UserEntity> ent = userRepo.findByUsername(dto.getUsername());
+		if(ent.isPresent()) {
+			UserEntity login = ent.get();
+			if(login.getPassword().equals(dto.getPassword())) {
+				return "Successfully login";
+			}else {
+				return "Invalid password";
+
 	public String login(UserDto req){
 		Optional<UserEntity> user = userRepo.findByuserEmail(req.getUserEmail());
 		if(user.isPresent()) {
@@ -61,11 +71,15 @@ public class UserServiceImpl implements UserService {
 			}
 			else {
 				return "login not sucessfully";
+
 			}
 		}
 		else {
 			return "user not found";
-		}
+    }
+	}
+
+
 	}
 	
 }
