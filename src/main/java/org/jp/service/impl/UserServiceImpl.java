@@ -3,6 +3,7 @@ package org.jp.service.impl;
 import java.util.Optional;
 
 import org.jp.dto.UserDto;
+import org.jp.dto.UserEntityReq;
 import org.jp.entity.UserEntity;
 import org.jp.repository.UserRepo;
 import org.jp.service.UserService;
@@ -35,8 +36,7 @@ public class UserServiceImpl implements UserService {
 		if (existingUserOptional.isPresent()) {
 			UserEntity existingUser = existingUserOptional.get();
 
-			existingUser.setFirstName(userDto.getFirstName());
-			existingUser.setLastName(userDto.getLastName());
+			existingUser.setUserName(userDto.getUserName());
 			existingUser.setPhoneNo(userDto.getPhoneNo());
 			existingUser.setRoleId(userDto.getRoleId());
 			existingUser.setStatus(userDto.getStatus());
@@ -51,35 +51,19 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	
-
-	public String login(UserDto dto) {
-		Optional<UserEntity> ent = userRepo.findByUsername(dto.getUsername());
-		if(ent.isPresent()) {
+	public String login(UserEntityReq dto) {
+		Optional<UserEntity> ent = userRepo.findByUserName(dto.getUserName());
+		if (ent.isPresent()) {
 			UserEntity login = ent.get();
-			if(login.getPassword().equals(dto.getPassword())) {
+			if (login.getPassword().equals(dto.getPassword())) {
 				return "Successfully login";
-			}else {
+			} else {
 				return "Invalid password";
 
-	public String login(UserDto req){
-		Optional<UserEntity> user = userRepo.findByuserEmail(req.getUserEmail());
-		if(user.isPresent()) {
-			UserEntity ur = user.get();
-			if(ur.getPassword().equals(req.getPassword())) {
-				return "sucessfully login";
 			}
-			else {
-				return "login not sucessfully";
-
-			}
-		}
-		else {
+		} else {
 			return "user not found";
-    }
+		}
 	}
 
-
-	}
-	
 }

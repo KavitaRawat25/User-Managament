@@ -14,10 +14,7 @@ public interface UserRepo extends JpaRepository<UserEntity, Long> {
 	UserRole save(Optional<UserEntity> user);
     // Custom query methods can be added here if needed
 	Optional<UserEntity> findByuserEmail(String userEmail);
-
-public interface UserRepo extends JpaRepository<UserEntity, Long>{
 	
-	Optional<UserEntity> findByuserEmail(String userEmail);
-
+	Optional<UserEntity> findByUserName(String userName);
 
 }
