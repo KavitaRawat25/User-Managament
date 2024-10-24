@@ -3,7 +3,6 @@ package org.jp.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,8 +48,8 @@ public class UserEntity {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		id = id;
+	public void setId(Long Id) {
+		this.id = id;
 	}
 	public String getFirstName() {
 		return firstName;

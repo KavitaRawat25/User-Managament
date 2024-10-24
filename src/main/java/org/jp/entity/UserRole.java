@@ -1,7 +1,6 @@
 package org.jp.entity;
 
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,5 +37,10 @@ public class UserRole {
 
     @Column(nullable = false)
     private int status;
+
+	public void setId(Long id2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

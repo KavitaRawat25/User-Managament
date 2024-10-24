@@ -15,9 +15,11 @@ public class UserTranslator {
 	public UserDto translateUserEntityToUserDto(UserEntity userEntity) {
 		return modelMapper.map(userEntity, UserDto.class);
 		
+		
 	}
 	
 	public UserEntity translateUserDtoToUserEntity(UserDto userDto) {
 		return modelMapper.map(userDto, UserEntity.class);
 	}
+	
 }
